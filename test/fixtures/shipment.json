@@ -1,0 +1,183 @@
+{
+  "InstallationID": "30000160520",
+  "Kind": 1,
+  "OrderNo": "BringWaybillTest",
+  "PickupDt": "2025-08-19T00:00:00",
+  "Weight": 500,
+  "ActorCSID": 1763,
+  "Temperature": 1,
+  "CarriagePayer": 1,
+  "CarrierConceptID": 47,
+  "CarrierCSID": 142,
+  "SubcarrierConceptID": 98,
+  "SubcarrierCSID": 251,
+  "ProdConceptID": 553,
+  "ProdCSID": 1122,
+  "StackCSID": 25632,
+  "PayerAccountAtCarrier": "01007170",
+  "SenderAccountAtCarrier": "01007170",
+  "Addresses": [
+    {
+      "Kind": 1,
+      "Name1": "Test test",
+      "Street1": "Test 1",
+      "PostCode": "4055",
+      "City": "SOLA",
+      "Mobile": "+4531404789",
+      "Email": "test@test.dk",
+      "Attention": "Test Test",
+      "CountryCode": "NO",
+      "Residential": false
+    },
+    {
+      "Kind": 9,
+      "Name1": "Unisport AS",
+      "Street1": "c/o Logistikksenteret",
+      "PostCode": "0060",
+      "POPostCode": "2450",
+      "POCity": "KØBENHAVN SV",
+      "CustNo": "0",
+      "CountryCode": "DK",
+      "ERPRef": "0",
+      "Residential": false
+    },
+    {
+      "Kind": 14,
+      "CountryCode": "DK",
+      "Residential": false
+    },
+    {
+      "Kind": 4,
+      "CountryCode": "DK",
+      "Residential": false
+    },
+    {
+      "Kind": 17,
+      "CountryCode": "DK",
+      "Residential": false
+    },
+    {
+      "Kind": 3,
+      "CountryCode": "DK",
+      "Residential": false
+    },
+    {
+      "Kind": 5,
+      "CountryCode": "DK",
+      "Residential": false
+    },
+    {
+      "Kind": 8,
+      "CountryCode": "DK",
+      "Residential": false
+    },
+    {
+      "Kind": 13,
+      "CountryCode": "DK",
+      "Residential": false
+    },
+    {
+      "Kind": 18,
+      "CountryCode": "DK",
+      "Residential": false
+    },
+    {
+      "Kind": 11,
+      "Residential": false
+    },
+    {
+      "Kind": 2,
+      "Name1": "UNISPORT A/S",
+      "Street1": "Sleipnersvej 2",
+      "PostCode": "4600",
+      "City": "Køge",
+      "POPostCode": "2620",
+      "POCity": "Albertslund",
+      "Phone": "004533250803",
+      "CountryCode": "DK",
+      "Residential": false
+    }
+  ],
+  "Amounts": [
+    {
+      "Kind": 1,
+      "CurrencyCode": 1,
+      "CurrencyName": "NOK",
+      "Value": 0
+    },
+    {
+      "Kind": 2,
+      "CurrencyCode": 1,
+      "CurrencyName": "NOK",
+      "Value": 0
+    }
+  ],
+  "References": [
+    {
+      "Kind": 54,
+      "Value": "B"
+    },
+    {
+      "Kind": 329,
+      "Value": ""
+    },
+    {
+      "Kind": 330,
+      "Value": ""
+    }
+  ],
+  "Lines": [
+    {
+      "LineWeight": 500,
+      "PkgWeight": 500,
+      "LineAmounts": [],
+      "Pkgs": [
+        {
+          "ItemNo": 1
+        }
+      ],
+      "Number": 1
+    }
+  ],
+  "ShpDocuments": [],
+  "ProductSettings": {
+    "DateTimeReferences": [
+      {
+        "ReferenceID": 108,
+        "DefaultEmpty": 0,
+        "ShowTime": 1,
+        "ShowDate": 1,
+        "DefaultValue": "2025-08-20T21:45:41"
+      },
+      {
+        "ReferenceID": 109,
+        "DefaultEmpty": 0,
+        "ShowTime": 0,
+        "ShowDate": 1,
+        "DefaultValue": "2025-08-19T21:45:41"
+      },
+      {
+        "ReferenceID": 110,
+        "DefaultEmpty": 0,
+        "ShowTime": 0,
+        "ShowDate": 1,
+        "DefaultValue": "2025-08-19T21:45:41"
+      },
+      {
+        "ReferenceID": 111,
+        "DefaultEmpty": 0,
+        "ShowTime": 0,
+        "ShowDate": 1,
+        "DefaultValue": "2025-08-19T21:45:41"
+      },
+      {
+        "ReferenceID": 9,
+        "DefaultEmpty": 0,
+        "ShowTime": 0,
+        "ShowDate": 1,
+        "DefaultValue": "2025-08-19T21:45:41"
+      }
+    ]
+  },
+  "CorrelationID": "76a594d6-7fd5-46d3-9e9f-ce11d886607a"
+}
