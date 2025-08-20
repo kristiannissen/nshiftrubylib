@@ -10,11 +10,7 @@ class NshiftTest < Minitest::Test
   def test_say_hello
     assert_equal(Nshift.say_hello, "Hello Kitty")
   end
-
-  def test_get_access_token
-    skip "Not for now"
-    assert_equal(Authentication.get_access_token.has_key?("access_token"), true)
-  end
+  
   # Fixme: Move to separate test file
   def test_shipment_post_shipment
     # assert_equal(file_fixture("shipment.json").has_key?("InstallationID"), true)

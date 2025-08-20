@@ -15,10 +15,12 @@ module Storage
   # Arguments:
   #   key: string
   #   data: hash
+  FOLDER = "./tmp"
+
   def self.set(key, data = {})
-    p = Pathname.new("./tmp")
+    p = Pathname.new(FOLDER)
     if p.directory? == false
-      STDERR.puts "TMP is not a folder"
+      STDERR.puts "#{FOLDER} is not a folder"
     end
 
     f = File.new(p.join("#{key}.json"), 'w')
@@ -29,7 +31,7 @@ module Storage
   end
 
   def self.get(key)
-    p = Pathname.new("./tmp")
+    p = Pathname.new(FOLDER)
 
     if File.exist?(p.join("#{key}.json")) == false
       STDERROR.puts "The file #{key} does not exist"

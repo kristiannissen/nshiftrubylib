@@ -2,8 +2,11 @@ require "net/http"
 require "dotenv/load"
 require "uri"
 require "json"
+require "logger"
 
 module Authentication
+
+  @logger = Logger.new($stdout)
 
   def self.get_access_token
     uri = URI.parse("https://account.nshiftportal.com/idp/connect/token")
@@ -19,6 +22,12 @@ module Authentication
 
     res = http.request(req)
     body = JSON.parse(res.body)
+
+    if body.has_key?("access_token") == false
+      STDERR.puts "No access token returned"
+    end
+
+    body["ttl"] = Time.now + body["expires_in"].to_i
 
     body
   end
