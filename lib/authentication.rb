@@ -3,6 +3,7 @@ require "dotenv/load"
 require "uri"
 require "json"
 require "logger"
+require "storage"
 
 module Authentication
 
@@ -24,11 +25,16 @@ module Authentication
     body = JSON.parse(res.body)
 
     if body.has_key?("access_token") == false
-      STDERR.puts "No access token returned"
+      @logger.error(body)
+      raise "No access token returned"
     end
 
-    body["ttl"] = Time.now + body["expires_in"].to_i
+    body["expires_at"] = Time.now + body["expires_in"].to_i
 
     body
+  end
+
+  def self.has_token_expired?
+    false     
   end
 end

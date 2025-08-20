@@ -21,6 +21,10 @@ module Shipment
     res = http.request(req)
     body = JSON.parse(res.body)
 
+    if body.has_key?("ErrorType")
+      raise "ERROR #{body['Message']}"
+    end
+
     body
   end
 end
