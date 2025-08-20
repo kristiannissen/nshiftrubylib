@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.description = "Interface to nshift rest services"
   s.authors = ["Kristian Nissen"]
   s.email = "k.nissen@unisport.group"
-  s.files = ["lib/nshift.rb", "lib/authentication.rb"]
+  s.files = ["lib/nshift.rb", "lib/authentication.rb", "lib/stacks.rb", "lib/storage.rb", "lib/shipment.rb"]
   s.homepage = "https://github.com/kristiannissen/nshiftrubylib"
   s.license = "MIT"
 end
