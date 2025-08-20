@@ -2,25 +2,26 @@
 # Todo: Add configuration option
 
 require "pathname"
+require "ostruct"
 
 module Storage
   # Store data like the access token in a simple key/value storage
   #
   # Example:
   #   >> Storage.set("hello", {})
-  #   => 
+  #   => int|0 
   #   >> Storage.get("hello")
   #   => {}
   #
   # Arguments:
   #   key: string
   #   data: hash
-  FOLDER = "./tmp"
+  CONFIG_ATTR = %i(folder)
 
   def self.set(key, data = {})
-    p = Pathname.new(FOLDER)
+    p = Pathname.new(self.config.folder)
     if p.directory? == false
-      STDERR.puts "#{FOLDER} is not a folder"
+      STDERR.puts "#{self.config.folder} is not a folder"
     end
 
     f = File.new(p.join("#{key}.json"), 'w')
@@ -31,12 +32,23 @@ module Storage
   end
 
   def self.get(key)
-    p = Pathname.new(FOLDER)
-
+    p = Pathname.new(self.config.folder)
     if File.exist?(p.join("#{key}.json")) == false
       STDERROR.puts "The file #{key} does not exist"
     end
 
     JSON.parse(File.read(p.join("#{key}.json")))
+  end
+  #
+  # https://kirillplatonov.com/posts/configure-ruby-module/
+  #
+  def self.configure
+    @config ||= Struct.new(*CONFIG_ATTR).new
+    yield(@config) if block_given?
+    @config
+  end
+
+  def self.config
+    @config || configure
   end
 end
