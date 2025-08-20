@@ -5,6 +5,7 @@ require "pathname"
 require "ostruct"
 
 module Storage
+  extend self
   # Store data like the access token in a simple key/value storage
   #
   # Example:
@@ -18,10 +19,10 @@ module Storage
   #   data: hash
   CONFIG_ATTR = %i(folder)
 
-  def self.set(key, data = {})
-    p = Pathname.new(self.config.folder)
+  def set(key, data = {})
+    p = Pathname.new(config.folder)
     if p.directory? == false
-      STDERR.puts "#{self.config.folder} is not a folder"
+      STDERR.puts "#{config.folder} is not a folder"
     end
 
     f = File.new(p.join("#{key}.json"), 'w')
@@ -31,8 +32,8 @@ module Storage
     File.size(p.join("#{key}.json")) > 0
   end
 
-  def self.get(key)
-    p = Pathname.new(self.config.folder)
+  def get(key)
+    p = Pathname.new(config.folder)
     if File.exist?(p.join("#{key}.json")) == false
       STDERROR.puts "The file #{key} does not exist"
     end
@@ -42,13 +43,13 @@ module Storage
   #
   # https://kirillplatonov.com/posts/configure-ruby-module/
   #
-  def self.configure
+  def configure
     @config ||= Struct.new(*CONFIG_ATTR).new
     yield(@config) if block_given?
     @config
   end
 
-  def self.config
+  def config
     @config || configure
   end
 end

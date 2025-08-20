@@ -6,10 +6,11 @@ require "logger"
 require "storage"
 
 module Authentication
+  extend self
 
   @logger = Logger.new($stdout)
 
-  def self.get_access_token
+  def get_access_token
     uri = URI.parse("https://account.nshiftportal.com/idp/connect/token")
     headers = {"Content-Type": "application/x-www-form-urlencoded"}
 
@@ -34,7 +35,7 @@ module Authentication
     body
   end
 
-  def self.has_token_expired?
-    false     
+  def has_token_expired?
+    true
   end
 end

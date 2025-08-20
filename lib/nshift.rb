@@ -1,7 +1,9 @@
 require "authentication"
 
 module Nshift
-  def self.say_hello
+  extend self
+
+  def say_hello
     "Hello Kitty"
   end
 

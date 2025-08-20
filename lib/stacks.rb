@@ -3,8 +3,9 @@ require "net/http"
 require "json"
 
 module Stacks
+  extend self
 
-  def self.get_stacks
+  def get_stacks
     uri = URI.parse("https://demo.shipmentserver.com:8080/ShipServer/#{ENV['ACTOR_ID']}/stacks")
     headers = {
       "Authorization": "bearer #{ENV['ACCESS_TOKEN']}",

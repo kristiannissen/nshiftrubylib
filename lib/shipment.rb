@@ -3,8 +3,9 @@ require "net/http"
 require "json"
 
 module Shipment
+  extend self
 
-  def self.post_shipment(payload)
+  def post_shipment(payload)
     uri = URI.parse("https://demo.shipmentserver.com:8080/ShipServer/#{ENV['ACTOR_ID']}/shipments")
     headers = {
       "Authorization": "bearer #{ENV['ACCESS_TOKEN']}",
