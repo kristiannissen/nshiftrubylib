@@ -1,24 +1,28 @@
 require "dotenv/load"
 require "net/http"
 require "json"
+require "logger"
 
 module Stacks
   extend self
+  @logger = Logger.new($stdout)
 
-  def get_stacks
-    uri = URI.parse("https://demo.shipmentserver.com:8080/ShipServer/#{ENV['ACTOR_ID']}/stacks")
+  def get_stacks(actor_id, access_token)
+    uri = URI.parse("https://demo.shipmentserver.com:8080/ShipServer/#{actor_id}/stacks")
     headers = {
-      "Authorization": "bearer #{ENV['ACCESS_TOKEN']}",
-      "Content-Type": "application/json"
+      "Authorization": "bearer #{access_token}}",
+      "Content-Type": "application/json",
     }
 
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
 
-    req = Net::HTTP::Post.new(uri.request_uri, headers)
+    req = Net::HTTP::Get.new(uri.request_uri, headers)
 
     res = http.request(req)
     body = JSON.parse(res.body)
+
+    raise "Error #{body["Message"]}" if body.has_key?("ErrorType")
 
     body
   end

@@ -13,7 +13,7 @@ module Authentication
     raise "No callback method passed as parameter" if callback.nil?
 
     uri = URI.parse("https://account.nshiftportal.com/idp/connect/token")
-    headers = {"Content-Type": "application/x-www-form-urlencoded"}
+    headers = { "Content-Type": "application/x-www-form-urlencoded" }
 
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true

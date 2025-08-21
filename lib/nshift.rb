@@ -6,6 +6,4 @@ module Nshift
   def say_hello
     "Hello Kitty"
   end
-
-
 end

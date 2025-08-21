@@ -1,10 +1,9 @@
 require "minitest/autorun"
+require "dotenv/load"
 require "stacks"
 
 class StacksTest < Minitest::Test
-
-  def test_get_stack
-    skip "Updated access token is needed"
-    assert_equal(Stacks.get_stacks, true)
+  def setup
+    Storage.config.folder = "./tmp"
   end
 end

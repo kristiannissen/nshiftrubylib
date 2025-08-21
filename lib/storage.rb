@@ -10,7 +10,7 @@ module Storage
   #
   # Example:
   #   >> Storage.set("hello", {})
-  #   => int|0 
+  #   => int|0
   #   >> Storage.get("hello")
   #   => {}
   #
@@ -25,7 +25,7 @@ module Storage
       STDERR.puts "#{config.folder} is not a folder"
     end
 
-    f = File.new(p.join("#{key}.json"), 'w')
+    f = File.new(p.join("#{key}.json"), "w")
     f.write data.to_json
     f.close
 
@@ -40,8 +40,9 @@ module Storage
 
     JSON.parse(File.read(p.join("#{key}.json")))
   end
+
   #
-  # https://kirillplatonov.com/posts/configure-ruby-module/
+  # Credits to https://kirillplatonov.com/posts/configure-ruby-module/
   #
   def configure
     @config ||= Struct.new(*CONFIG_ATTR).new
