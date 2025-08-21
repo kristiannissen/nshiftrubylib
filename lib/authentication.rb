@@ -1,16 +1,31 @@
 require "net/http"
-require "dotenv/load"
+# require "dotenv/load"
 require "uri"
 require "json"
 require "logger"
-require "storage"
+# require "storage"
 
 module Authentication
   extend self
 
   @logger = Logger.new($stdout)
+  # Todo: This should be extracted from the module body and instead
+  #       be based in as a parameter, the config should be done outside
+  #       of the module and then the required "set" method be passed as
+  #       a parameter arg
+  # Storage.config.folder = "./tmp"
 
-  def get_access_token
+  # def one(k, v)
+  #   
+  # end
+  #
+  # def two(k, v, &callback)
+  #   callback.call(k, v)
+  # end
+  # Fixme: Error handling for &callback
+  def get_access_token(&callback)
+    raise "No callback method passed as parameter" if callback.nil?
+
     uri = URI.parse("https://account.nshiftportal.com/idp/connect/token")
     headers = {"Content-Type": "application/x-www-form-urlencoded"}
 
@@ -31,6 +46,9 @@ module Authentication
     end
 
     body["expires_at"] = Time.now + body["expires_in"].to_i
+
+    # Storage.set("token", body)
+    callback.call("token", body)
 
     body
   end

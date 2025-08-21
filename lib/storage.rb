@@ -19,7 +19,7 @@ module Storage
   #   data: hash
   CONFIG_ATTR = %i(folder)
 
-  def set(key, data = {})
+  def set(key = "", data = {})
     p = Pathname.new(config.folder)
     if p.directory? == false
       STDERR.puts "#{config.folder} is not a folder"
