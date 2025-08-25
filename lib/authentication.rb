@@ -11,7 +11,7 @@ module Authentication
 
   def get_access_token(&callback)
     raise "No callback method passed as parameter" if callback.nil?
-
+    # Todo: Move URL to environment file
     uri = URI.parse("https://account.nshiftportal.com/idp/connect/token")
     headers = { "Content-Type": "application/x-www-form-urlencoded" }
 
@@ -39,7 +39,7 @@ module Authentication
   end
 
   def has_token_expired?(data = {})
-    raise "The expires at key is missing" unless data.has_key?("expires_at")
+    raise "The expires_at key is missing" unless data.has_key?("expires_at")
 
     t = Time.parse(data["expires_at"])
 

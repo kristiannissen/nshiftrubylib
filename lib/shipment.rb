@@ -6,6 +6,7 @@ module Shipment
   extend self
 
   def post_shipment(payload)
+    # Todo: Move URL to environment file
     uri = URI.parse("https://demo.shipmentserver.com:8080/ShipServer/#{ENV["ACTOR_ID"]}/shipments")
     headers = {
       "Authorization": "bearer #{ENV["ACCESS_TOKEN"]}",
@@ -23,7 +24,7 @@ module Shipment
     body = JSON.parse(res.body)
 
     if body.has_key?("ErrorType")
-      raise "ERROR #{body["Message"]}"
+      raise "Error #{body["Message"]}"
     end
 
     body

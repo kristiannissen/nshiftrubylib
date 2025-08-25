@@ -22,6 +22,7 @@ module Storage
   def set(key = "", data = {})
     p = Pathname.new(config.folder)
     if p.directory? == false
+      raise "Error #{config.folder} is not a folder"
       STDERR.puts "#{config.folder} is not a folder"
     end
 
@@ -37,7 +38,7 @@ module Storage
     if File.exist?(p.join("#{key}.json")) == false
       STDERROR.puts "The file #{key} does not exist"
     end
-
+    # Todo: Add empty {} if no key is found
     JSON.parse(File.read(p.join("#{key}.json")))
   end
 

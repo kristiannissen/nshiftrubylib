@@ -6,9 +6,9 @@ require "test_helper"
 class ShipmentTest < Minitest::Test
   def test_post_shipment
     e = assert_raises(RuntimeError) do
-      Shipment.post_shipment(file_fixture("shipment.json"))
+      Shipment.post_shipment(file_fixture("shipment_request.json"))
     end
 
-    assert_equal("ERROR Unauthorized", e.message)
+    assert_equal(/Unauthorized/.match?(e.message), true)
   end
 end
